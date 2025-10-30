@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "temporal-knowledge-extractor"
+version = "0.1.0"
+description = "A playground for building temporal knowledge graphs from event streams."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "networkx>=3.2",
+    "pydantic>=2.7",
+    "rich>=13.7",
+    "typer>=0.12"
+]
+
+[project.scripts]
+tke = "temporal_knowledge_extractor.cli:app"

@@ -1,0 +1,46 @@
+{
+  "sagas": [
+    {
+      "name": "provision-saas-tenant",
+      "description": "Provision a new tenant across billing, IAM, and analytics domains.",
+      "metadata": {
+        "owner": "platform-team",
+        "docs": "https://example.com/docs/tenants"
+      },
+      "steps": [
+        {
+          "name": "create-billing-account",
+          "action": "billing.create_account",
+          "compensating_action": "billing.rollback_account",
+          "timeout": 20000000000,
+          "requires": [],
+          "metadata": {
+            "idempotent": "true"
+          }
+        },
+        {
+          "name": "provision-iam-domain",
+          "action": "iam.provision_domain",
+          "compensating_action": "iam.deprovision_domain",
+          "timeout": 15000000000,
+          "requires": [
+            "create-billing-account"
+          ],
+          "metadata": {}
+        },
+        {
+          "name": "bootstrap-analytics",
+          "action": "analytics.bootstrap_tenant",
+          "compensating_action": "",
+          "timeout": 25000000000,
+          "requires": [
+            "provision-iam-domain"
+          ],
+          "metadata": {
+            "retries": "2"
+          }
+        }
+      ]
+    }
+  ]
+}

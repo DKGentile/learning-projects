@@ -1,0 +1,42 @@
+[
+  {
+    "event_type": "service.deployed",
+    "occurred_at": "2024-05-01T10:15:00Z",
+    "actor": "team-atlas",
+    "subject": "payments",
+    "attributes": {
+      "commit": "a1f3c7a",
+      "env": "staging"
+    }
+  },
+  {
+    "event_type": "service.deployed",
+    "occurred_at": "2024-05-01T11:35:00Z",
+    "actor": "team-apollo",
+    "subject": "notifications",
+    "attributes": {
+      "commit": "b9d5ef2",
+      "env": "production"
+    }
+  },
+  {
+    "event_type": "incident.opened",
+    "occurred_at": "2024-05-02T01:05:00Z",
+    "actor": "pagerduty",
+    "subject": "payments",
+    "attributes": {
+      "severity": "critical",
+      "region": "us-east-1"
+    }
+  },
+  {
+    "event_type": "incident.resolved",
+    "occurred_at": "2024-05-02T03:22:00Z",
+    "actor": "team-atlas",
+    "subject": "payments",
+    "attributes": {
+      "duration_minutes": "137",
+      "postmortem_required": "true"
+    }
+  }
+]
